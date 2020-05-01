@@ -1,6 +1,6 @@
-module git.code.oa.com/infosec_basicPlatform_devops/devops_sdk
+module github.com/qq1141000259/public_tools
 
-go 1.13
+go 1.14
 
 require (
 	github.com/natefinch/lumberjack v2.0.0+incompatible
