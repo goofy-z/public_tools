@@ -1,7 +1,7 @@
 package httpclient
 
 import (
-	"git.code.oa.com/infosec_basicPlatform_devops/devops_sdk/zlog"
+	"github.com/qq1141000259/public_tools/zlog"
 	"io"
 	"net/http"
 )

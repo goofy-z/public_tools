@@ -1,12 +1,9 @@
 package zlog
 
 import (
-	"bytes"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"go.uber.org/zap/zapcore"
-	"net/http"
 	"runtime"
 	"time"
 )
@@ -39,7 +36,7 @@ type ZapConfig struct {
 	AlarmUser string
 	// 企业微信通知组 多个逗号分割
 	AlarmGroup string
-	// 企业微信mention
+	// mention
 	Mention string
 
 	//当前的logger
@@ -112,24 +109,7 @@ func getFuncStack(skip int) string {
 	return ""
 }
 
-// Error消息企业微信告警
+// Error消息告警
 func (z *ZapConfig) wxwrokAlarm(errStr string) {
-	if !z.Alarm {
-		return
-	}
-	url := "http://api.isec.oa.com/apis/wxwork/send?token=test"
-	// text := fmt.Sprintf("[服务名: %s]", Jlog.)
-	data := map[string]string{}
-	data["text"] = fmt.Sprintf("[服务: %s]ERROR --> %s", z.ServerName, errStr)
-	if z.AlarmUser != "" {
-		data["user"] = z.AlarmUser
-	}
-	if z.AlarmGroup != "" {
-		data["group"] = z.AlarmGroup
-	}
-	if z.Mention != "" {
-		data["group"] = z.Mention
-	}
-	body, _ := json.Marshal(data)
-	_, _ = http.Post(url, "application/json", bytes.NewReader(body))
+
 }
